@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+	<dubbo:application name="${app.name}" owner="${app.admin}"
+		organization="${app.organization}" />
+	<dubbo:monitor protocol="registry"></dubbo:monitor>
+	<!-- <dubbo:protocol name="dubbo" port="${dubbo.port}" /> -->
+	<!-- <dubbo:protocol name="rmi" port="1099" /> -->
+	<!-- <dubbo:protocol name="hessian" port="8089" /> -->
+	<!-- <dubbo:protocol name="webservice" port="9999" server="jetty"/> -->
+
+	<!-- multi-registry -->
+	<dubbo:registry id="dubboRegistryXxx" protocol="zookeeper"
+		address="${dubbo.registry.svr_xxx}" />
+	<!-- <dubbo:registry id="hangzhouRegistry" address="10.20.141.151:9010" 
+		default="false" /> -->
+	<dubbo:provider delay="-1" protocol="dubbo" timeout="10000"
+		retries="3" />
+
+</beans>
