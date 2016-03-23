@@ -7,20 +7,22 @@
 	<version>1.0</version>
 	<!-- name>Huatek unicorn distributed service framework</name -->
 	<description>
-        Huatek unicorn distributed service framework
+        RS distributed service framework
     </description>
-	<inceptionYear>2014</inceptionYear>
+	<inceptionYear>2016</inceptionYear>
 	<organization>
-		<name>Huatek</name>
+		<name>RS</name>
 		<url>http://www.huatek.com</url>
 	</organization>
-	<url>http://unicorn.huatek.com</url>
+	<url>http://www.huatek.com</url>
 	<properties>
 		<file.encoding>UTF-8</file.encoding>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<spring.version>3.2.4.RELEASE</spring.version>
+		<spring.version>4.2.5.RELEASE</spring.version>
+		<zk.version>3.4.5</zk.version>
+		<dubbo.version>2.5.3</dubbo.version>
 	</properties>
 	<modules>
 		<!-- module>vimgr-parent</module -->
@@ -59,49 +61,20 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>com.github.sgroschupf</groupId>
-				<artifactId>zkclient</artifactId>
-				<version>0.1</version>
-			</dependency>
-			<dependency>
 				<groupId>org.apache.zookeeper</groupId>
 				<artifactId>zookeeper</artifactId>
-				<version>3.4.5.hop</version>
+				<version>${zk.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.alibaba</groupId>
 				<artifactId>dubbo</artifactId>
-				<version>2.5.3</version>
+				<version>${dubbo.version}</version>
 				<exclusions>
 					<exclusion>
 						<groupId>org.springframework</groupId>
 						<artifactId>spring</artifactId>
 					</exclusion>
-					<exclusion>
-						<groupId>org.jboss.netty</groupId>
-						<artifactId>netty</artifactId>
-					</exclusion>
 				</exclusions>
-			</dependency>
-			<dependency>
-				<groupId>log4j</groupId>
-				<artifactId>log4j</artifactId>
-				<version>1.2.17</version>
-			</dependency>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-				<version>1.7.5</version>
-			</dependency>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-log4j12</artifactId>
-				<version>1.7.5</version>
-			</dependency>
-			<dependency>
-				<groupId>opensymphony</groupId>
-				<artifactId>sitemesh</artifactId>
-				<version>2.4.2</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -110,139 +83,13 @@
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
-				<artifactId>spring-context</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-jdbc</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-test</artifactId>
-				<version>${spring.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-web</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
 				<artifactId>spring-context-support</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.hamcrest</groupId>
-				<artifactId>hamcrest-all</artifactId>
-				<version>1.3</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.dbunit</groupId>
-				<artifactId>dbunit</artifactId>
-				<version>2.4.9</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.aspectj</groupId>
-				<artifactId>aspectjweaver</artifactId>
-				<version>1.7.2</version>
-			</dependency>
-			<dependency>
-				<groupId>cglib</groupId>
-				<artifactId>cglib</artifactId>
-				<version>2.2.2</version>
-			</dependency>
-			<!-- ehcache -->
-			<dependency>
-				<groupId>net.sf.ehcache</groupId>
-				<artifactId>ehcache</artifactId>
-				<version>2.6.2</version>
-				<type>pom</type>
-			</dependency>
-			<dependency>
-				<groupId>javax.jms</groupId>
-				<artifactId>jms-api</artifactId>
-				<version>1.1-rev-1</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-jms</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.oracle</groupId>
-				<artifactId>ojdbc14</artifactId>
-				<version>10.2.0.2</version>
-			</dependency>
-			<dependency>
-				<groupId>aopalliance</groupId>
-				<artifactId>aopalliance</artifactId>
-				<version>1.0</version>
-			</dependency>
-			<!-- XStream -->
-			<dependency>
-				<groupId>com.thoughtworks.xstream</groupId>
-				<artifactId>xstream</artifactId>
-				<version>1.4.4</version>
-			</dependency>
-			<dependency>
-				<groupId>xpp3</groupId>
-				<artifactId>xpp3_min</artifactId>
-				<version>1.1.4c</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.poi</groupId>
-				<artifactId>poi-ooxml</artifactId>
-				<version>3.9</version>
-				<exclusions>
-					<exclusion>
-						<artifactId>xml-apis</artifactId>
-						<groupId>xml-apis</groupId>
-					</exclusion>
-					<exclusion>
-						<artifactId>stax-api</artifactId>
-						<groupId>stax</groupId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-			<dependency>
-				<groupId>commons-lang</groupId>
-				<artifactId>commons-lang</artifactId>
-				<version>2.6</version>
-			</dependency>
-			<dependency>
-				<groupId>commons-io</groupId>
-				<artifactId>commons-io</artifactId>
-				<version>2.4</version>
-			</dependency>
-			<dependency>
-				<groupId>org.freemarker</groupId>
-				<artifactId>freemarker</artifactId>
-				<version>2.3.19</version>
-			</dependency>
-			<dependency>
-				<groupId>json</groupId>
-				<artifactId>json-lib</artifactId>
-				<version>2.1</version>
-			</dependency>
-			<dependency>
-				<groupId>net.sf.ezmorph</groupId>
-				<artifactId>ezmorph</artifactId>
-				<version>1.0.6</version>
-			</dependency>
-			<dependency>
-				<groupId>commons-beanutils</groupId>
-				<artifactId>commons-beanutils</artifactId>
-				<version>1.8.3</version>
-			</dependency>
-			<dependency>
-				<groupId>org.devlib.schmidt</groupId>
-				<artifactId>imageinfo</artifactId>
-				<version>1.9</version>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>3.3.2</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -377,7 +224,7 @@
 	<repositories>
 		<repository>
 			<id>nexus</id>
-			<url>http://192.168.129.188:19999/nexus/content/groups/public/</url>
+			<url>http://192.168.56.102:19999/nexus/content/groups/public/</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
@@ -390,7 +237,7 @@
 	<pluginRepositories>
 		<pluginRepository>
 			<id>nexus</id>
-			<url>http://192.168.129.188:19999/nexus/content/groups/public</url>
+			<url>http://192.168.56.102:19999/nexus/content/groups/public</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
@@ -403,11 +250,11 @@
 	<distributionManagement>
 		<repository>
 			<id>releases</id>
-			<url>http://192.168.129.188:19999/nexus/content/repositories/releases</url>
+			<url>http://192.168.56.102:19999/nexus/content/repositories/releases</url>
 		</repository>
 		<snapshotRepository>
 			<id>snapshots</id>
-			<url>http://192.168.129.188:19999/nexus/content/repositories/snapshots</url>
+			<url>http://192.168.56.102:19999/nexus/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 	<!-- local maven repository end -->

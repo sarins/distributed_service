@@ -9,5 +9,5 @@ public interface ApplyServiceClient {
 	 * @return applyId
 	 */
 	public String newApply(String applyType, String submitterId);
-	
+
 }
